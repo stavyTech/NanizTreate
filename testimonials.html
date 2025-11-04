@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials | Savory Events</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .testimonials-hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('http://static.photos/event/1200x630/8');
+            background-size: cover;
+            background-position: center;
+        }
+        .nav-solid {
+            background-color: #111827;
+        }
+        .testimonial-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 nav-solid">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-white text-2xl font-bold">Naniz<span class="text-amber-400">Treate</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-white hover:text-amber-400 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="about.html" class="text-white hover:text-amber-400 px-3 py-2 rounded-md text-sm font-medium">About Us</a>
+                        <a href="gallery.html" class="text-white hover:text-amber-400 px-3 py-2 rounded-md text-sm font-medium">Gallery</a>
+                        <a href="testimonials.html" class="text-amber-400 px-3 py-2 rounded-md text-sm font-medium">Testimonials</a>
+                        <a href="contact.html" class="text-white hover:text-amber-400 px-3 py-2 rounded-md text-sm font-medium">Contact Us</a>
+                        <a href="book.html" class="ml-4 bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">Book Now</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-white hover:text-amber-400 focus:outline-none">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="testimonials-hero h-96 flex items-center justify-center text-white pt-20">
+        <div class="text-center px-4" data-aos="fade-up">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Client Testimonials</h1>
+            <p class="text-xl max-w-2xl mx-auto">Hear what our clients say about their experiences with us</p>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Happy Clients</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">We take pride in creating memorable experiences that exceed expectations</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-md testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-500 mr-4">
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"Savory Events made our wedding day absolutely perfect. Every detail was executed flawlessly, and the food was exceptional. Our guests are still talking about it months later!"</p>
+                    <div class="flex items-center">
+                        <img src="http://static.photos/people/200x200/1" alt="Client" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold">Jennifer & Michael</h4>
+                            <p class="text-sm text-gray-500">Wedding Clients</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-md testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-500 mr-4">
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"The corporate gala organized by Savory Events was a tremendous success. Their attention to detail and professional service made the entire process seamless. We'll definitely work with them again."</p>
+                    <div class="flex items-center">
+                        <img src="http://static.photos/people/200x200/2" alt="Client" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold">David Thompson</h4>
+                            <p class="text-sm text-gray-500">CEO, TechCorp</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-md testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-500 mr-4">
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"For my mother's 70th birthday, I wanted something truly special. Savory Events delivered beyond my expectations. The food, decor, and overall atmosphere were perfect. Thank you for making her day so memorable!"</p>
+                    <div class="flex items-center">
+                        <img src="http://static.photos/people/200x200/3" alt="Client" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold">Sarah Johnson</h4>
+                            <p class="text-sm text-gray-500">Private Client</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 4 -->
+                <div class="bg-white p-8 rounded-lg shadow-md testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-500 mr-4">
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"As a wedding planner myself, I'm extremely particular about who I work with. Savory Events is now my go-to for all catering needs. Their team is professional, creative, and delivers exceptional quality."</p>
+                    <div class="flex items-center">
+                        <img src="http://static.photos/people/200x200/4" alt="Client" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold">Emily Rodriguez</h4>
+                            <p class="text-sm text-gray-500">Wedding Planner</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 5 -->
+                <div class="bg-white p-8 rounded-lg shadow-md testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-500 mr-4">
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"Our annual conference has never been better received. The venue setup, catering, and overall event flow were impeccable. Many attendees commented it was our best event yet!"</p>
+                    <div class="flex items-center">
+                        <img src="http://static.photos/people/200x200/5" alt="Client" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold">Mark Williams</h4>
+                            <p class="text-sm text-gray-500">Event Director, Global Inc.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 6 -->
+                <div class="bg-white p-8 rounded-lg shadow-md testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-500 mr-4">
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"From our first meeting to the final cleanup, Savory Events was a pleasure to work with. They took our vague ideas and turned them into a spectacular anniversary celebration that our family will cherish forever."</p>
+                    <div class="flex items-center">
+                        <img src="http://static.photos/people/200x200/6" alt="Client" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold">Robert & Linda Chen</h4>
+                            <p class="text-sm text-gray-500">50th Anniversary</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Testimonials -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Video Testimonials</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Hear directly from our clients about their experiences</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gray-200 rounded-lg overflow-hidden relative" style="padding-bottom: 56.25%;" data-aos="fade-up">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="bg-amber-500 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                <i data-feather="play" class="w-8 h-8"></i>
+                            </div>
+                            <p class="text-gray-700">Jennifer & Michael's Wedding</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-200 rounded-lg overflow-hidden relative" style="padding-bottom: 56.25%;" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="bg-amber-500 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                <i data-feather="play" class="w-8 h-8"></i>
+                            </div>
+                            <p class="text-gray-700">TechCorp Annual Gala</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-amber-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Ready to Create Your Perfect Event?</h2>
+            <p class="text-gray-600 mb-8">Join our growing list of satisfied clients and experience the Savory Events difference.</p>
+            <a href="book.html" class="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-md font-medium text-lg transition duration-300 inline-block">Book Your Event</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Savory<span class="text-amber-400">Events</span></h3>
+                    <p class="text-gray-400">Creating memorable experiences through exceptional food and event planning since 2010.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 hover:text-white transition duration-300">Gallery</a></li>
+                        <li><a href="testimonials.html" class="text-gray-400 hover:text-white transition duration-300">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Wedding Planning</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Corporate Events</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Private Parties</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Catering Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400">
+                            <i data-feather="map-pin" class="w-5 h-5 mr-2"></i>
+                            123 Event Street, New York
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i data-feather="phone" class="w-5 h-5 mr-2"></i>
+                            (555) 123-4567
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i data-feather="mail" class="w-5 h-5 mr-2"></i>
+                            info@savoryevents.com
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2025 Stavytech. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i data-feather="facebook" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i data-feather="instagram" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i data-feather="twitter" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i data-feather="linkedin" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS and Feather Icons
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+            });
+            feather.replace();
+        });
+    </script>
+</body>
+</html>
