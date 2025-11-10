@@ -46,9 +46,20 @@
                     </div>
                 </div>
                 <div class="md:hidden">
-                    <button class="text-white hover:text-amber-400 focus:outline-none">
+                    <button id="mobile-menu-button" aria-controls="mobile-menu" aria-expanded="false" class="text-white hover:text-amber-400 focus:outline-none">
                         <i data-feather="menu"></i>
                     </button>
+                </div>
+                <!-- Mobile menu (hidden by default) -->
+                <div id="mobile-menu" class="hidden md:hidden">
+                    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-900">
+                        <a href="index.html" class="block text-white hover:text-amber-400 px-3 py-2 rounded-md text-base font-medium">Home</a>
+                        <a href="about.html" class="block text-white hover:text-amber-400 px-3 py-2 rounded-md text-base font-medium">About Us</a>
+                        <a href="gallery.html" class="block text-white hover:text-amber-400 px-3 py-2 rounded-md text-base font-medium">Gallery</a>
+                        <a href="testimonials.html" class="block text-amber-400 px-3 py-2 rounded-md text-base font-medium">Testimonials</a>
+                        <a href="contact.html" class="block text-white hover:text-amber-400 px-3 py-2 rounded-md text-base font-medium">Contact Us</a>
+                        <a href="book.html" class="block mt-2 bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-md text-base font-medium transition duration-300">Book Now</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -311,7 +322,48 @@
                 duration: 800,
                 easing: 'ease-in-out',
             });
+            // Render feather icons
             feather.replace();
+
+            // Mobile menu toggle logic
+            const mobileButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileButton && mobileMenu) {
+                mobileButton.addEventListener('click', () => {
+                    const isHidden = mobileMenu.classList.contains('hidden');
+                    if (isHidden) {
+                        mobileMenu.classList.remove('hidden');
+                        mobileButton.setAttribute('aria-expanded', 'true');
+                        // swap icon to X
+                        const icon = mobileButton.querySelector('[data-feather]');
+                        if (icon) {
+                            icon.setAttribute('data-feather', 'x');
+                            feather.replace();
+                        }
+                    } else {
+                        mobileMenu.classList.add('hidden');
+                        mobileButton.setAttribute('aria-expanded', 'false');
+                        const icon = mobileButton.querySelector('[data-feather]');
+                        if (icon) {
+                            icon.setAttribute('data-feather', 'menu');
+                            feather.replace();
+                        }
+                    }
+                });
+
+                // close on escape key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        mobileButton.setAttribute('aria-expanded', 'false');
+                        const icon = mobileButton.querySelector('[data-feather]');
+                        if (icon) {
+                            icon.setAttribute('data-feather', 'menu');
+                            feather.replace();
+                        }
+                    }
+                });
+            }
         });
     </script>
 </body>
