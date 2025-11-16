@@ -70,7 +70,7 @@
                 <a href="about.html" class="text-gray-700 hover:text-orange-500 block px-3 py-2 rounded-md text-base font-medium">About Us</a>
                 <a href="testimonials.html" class="text-gray-700 hover:text-orange-500 block px-3 py-2 rounded-md text-base font-medium">Testimonials</a>
                 <a href="contact.html" class="text-gray-700 hover:text-orange-500 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
-                <button class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium w-full mt-2">
+                <button id="mobile-cart-button" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium w-full mt-2">
                     <i data-feather="shopping-cart" class="inline mr-1"></i> Cart (<span id="mobile-cart-count">0</span>)
                 </button>
             </div>
@@ -555,7 +555,12 @@
         });
         
         document.getElementById('checkout-btn').addEventListener('click', function() {
-            window.location.href = 'checkout.html';
+                try {
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                } catch (ex) {
+                    console.warn('Could not save cart:', ex);
+                }
+                window.location.href = 'checkout.html';
         });
         
         // Initialize cart count on page load
@@ -577,6 +582,19 @@
         const cartBtn = document.getElementById('cart-button');
         if (cartBtn) {
             cartBtn.addEventListener('click', function(e) {
+                try {
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                } catch (ex) {
+                    console.warn('Could not save cart to localStorage:', ex);
+                }
+                window.location.href = 'checkout.html';
+            });
+        }
+
+        // Handle mobile cart button click
+        const mobileCartBtn = document.getElementById('mobile-cart-button');
+        if (mobileCartBtn) {
+            mobileCartBtn.addEventListener('click', function(e) {
                 try {
                     localStorage.setItem('cart', JSON.stringify(cart));
                 } catch (ex) {

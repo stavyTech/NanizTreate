@@ -61,6 +61,9 @@
                 <a href="about.html" class="text-gray-700 hover:text-orange-500 block px-3 py-2 rounded-md text-base font-medium">About Us</a>
                 <a href="testimonials.html" class="text-gray-700 hover:text-orange-500 block px-3 py-2 rounded-md text-base font-medium">Testimonials</a>
                 <a href="contact.html" class="text-gray-700 hover:text-orange-500 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                <button id="mobile-cart-button" class="w-full bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium mt-2 flex items-center justify-center">
+                    <i data-feather="shopping-cart" class="inline mr-1"></i> Cart (<span id="mobile-cart-count">0</span>)
+                </button>
             </div>
         </div>
     </nav>
@@ -102,19 +105,19 @@
                 <form id="checkout-form" class="space-y-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Full Name</label>
-                        <input id="full-name" type="text" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500">
+                        <input id="full-name" type="text" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:border-orange-500 focus:ring-orange-500">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Phone Number</label>
-                        <input id="phone" type="tel" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500">
+                        <input id="phone" type="tel" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:border-orange-500 focus:ring-orange-500">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Email Address</label>
-                        <input id="email" type="email" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500">
+                        <input id="email" type="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:border-orange-500 focus:ring-orange-500">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700">House Address</label>
-                        <textarea id="address" rows="3" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"></textarea>
+                        <textarea id="address" rows="3" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:border-orange-500 focus:ring-orange-500"></textarea>
                     </div>
 
                     <div class="pt-4">
@@ -197,29 +200,29 @@
                     subtotal += itemTotal;
 
                     const card = document.createElement('div');
-                    card.className = 'flex items-center justify-between border rounded p-3';
+                    card.className = 'border rounded p-4 bg-gray-50';
                     card.innerHTML = `
-                        <div class="flex items-center">
-                            <div class="mr-4">
-                                <img src="${item.image || 'http://static.photos/food/200x200/1'}" alt="${item.name}" class="w-16 h-16 object-cover rounded">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+                            <div class="flex-shrink-0">
+                                <img src="${item.image || 'http://static.photos/food/200x200/1'}" alt="${item.name}" class="w-24 h-24 object-cover rounded" onerror="this.src='http://static.photos/food/200x200/1'">
                             </div>
-                            <div>
-                                <div class="font-semibold">${item.name}</div>
+                            <div class="flex-grow">
+                                <div class="font-semibold text-lg">${item.name}</div>
                                 <div class="text-sm text-gray-600">${formatNaira(item.price)} each</div>
                             </div>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <button data-action="minus" data-id="${item.id}" class="minus-btn bg-gray-200 hover:bg-gray-300 text-gray-800 rounded px-3 py-1 inline-flex items-center">
-                                <i data-feather="minus" class="w-4 h-4"></i>
-                            </button>
-                            <button data-action="plus" data-id="${item.id}" class="plus-btn bg-green-500 hover:bg-green-600 text-white rounded px-3 py-1 inline-flex items-center">
-                                <i data-feather="plus" class="w-4 h-4"></i>
-                            </button>
-                            <div class="text-sm font-medium">x <span class="item-qty">${item.quantity}</span></div>
-                            <div class="w-20 text-right font-semibold">${formatNaira(itemTotal)}</div>
-                            <button data-action="remove" data-id="${item.id}" class="remove-btn text-red-500 hover:text-red-700 ml-2 inline-flex items-center">
-                                <i data-feather="trash-2" class="w-4 h-4"></i>
-                            </button>
+                            <div class="flex items-center gap-2 flex-wrap justify-between">
+                                <button data-action="minus" data-id="${item.id}" class="minus-btn bg-gray-200 hover:bg-gray-300 text-gray-800 rounded px-2 py-1 inline-flex items-center text-sm">
+                                    <i data-feather="minus" class="w-4 h-4"></i>
+                                </button>
+                                <span class="text-sm font-medium min-w-8 text-center">x<span class="item-qty">${item.quantity}</span></span>
+                                <button data-action="plus" data-id="${item.id}" class="plus-btn bg-green-500 hover:bg-green-600 text-white rounded px-2 py-1 inline-flex items-center text-sm">
+                                    <i data-feather="plus" class="w-4 h-4"></i>
+                                </button>
+                                <div class="font-semibold text-right min-w-20">${formatNaira(itemTotal)}</div>
+                                <button data-action="remove" data-id="${item.id}" class="remove-btn text-red-500 hover:text-red-700 inline-flex items-center">
+                                    <i data-feather="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
                         </div>
                     `;
 
@@ -287,6 +290,20 @@
                     saveCart();
                 }
             });
+
+            // Mobile cart button handler
+            const mobileCartBtn = document.getElementById('mobile-cart-button');
+            if (mobileCartBtn) {
+                mobileCartBtn.addEventListener('click', function() {
+                    try {
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                    } catch (ex) {
+                        console.warn('Could not save cart:', ex);
+                    }
+                    // Reload to ensure cart is displayed
+                    window.location.href = 'checkout.html';
+                });
+            }
 
             // Checkout form handling with EmailJS
             const form = document.getElementById('checkout-form');
