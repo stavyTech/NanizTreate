@@ -47,7 +47,7 @@
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-4 flex items-center md:ml-6">
-                        <button class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">
+                        <button id="cart-button" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300" onclick="localStorage.setItem('cart', JSON.stringify(cart)); window.location.href='checkout.html';">
                             <i data-feather="shopping-cart" class="inline mr-1"></i> Cart (<span id="cart-count">0</span>)
                         </button>
                     </div>
@@ -522,8 +522,15 @@
             });
         });
 
-        // Shopping cart functionality
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        // Shopping cart functionality with localStorage fallback
+        let cart = [];
+        try {
+            const cartData = localStorage.getItem('cart');
+            cart = cartData ? JSON.parse(cartData) : [];
+        } catch (e) {
+            console.warn('localStorage access blocked:', e);
+            cart = [];
+        }
         
         function updateCartCount() {
             const count = cart.reduce((total, item) => total + item.quantity, 0);
@@ -579,7 +586,11 @@
                 button.addEventListener('click', (e) => {
                     const index = e.target.closest('.remove-item').getAttribute('data-index');
                     cart.splice(index, 1);
-                    localStorage.setItem('cart', JSON.stringify(cart));
+                    try {
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                    } catch (ex) {
+                        console.warn('Could not save cart:', ex);
+                    }
                     updateCartCount();
                     updateCartModal();
                 });
@@ -594,7 +605,11 @@
                 button.addEventListener('click', function() {
                     const index = this.getAttribute('data-index');
                     cart.splice(index, 1);
-                    localStorage.setItem('cart', JSON.stringify(cart));
+                    try {
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                    } catch (ex) {
+                        console.warn('Could not save cart:', ex);
+                    }
                     updateCartCount();
                     updateCartModal();
                 });
@@ -613,22 +628,42 @@
                 if (existingItem) {
                     existingItem.quantity += 1;
                 } else {
-                    cart.push({ id, name, price, quantity: 1 });
+                    const itemEl = this.closest('.menu-item');
+                    const imgEl = itemEl ? itemEl.querySelector('img') : null;
+                    const image = this.getAttribute('data-image') || (imgEl ? imgEl.src : 'http://static.photos/food/200x200/1');
+                    cart.push({ id: String(id), name, price, image, quantity: 1 });
                 }
                 
-                localStorage.setItem('cart', JSON.stringify(cart));
+                try {
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                } catch (ex) {
+                    console.warn('Could not save cart:', ex);
+                }
                 updateCartCount();
                 updateCartModal();
                 
-                // Show cart modal
+                // Show cart modal (brief) then redirect to checkout so user sees full cart
                 document.getElementById('cart-modal').classList.remove('hidden');
+
+                // Redirect to checkout after a short delay so the user sees the confirmation
+                setTimeout(() => {
+                    window.location.href = 'checkout.html';
+                }, 800);
             });
         });
         
-        document.getElementById('cart-button').addEventListener('click', function() {
-            document.getElementById('cart-modal').classList.remove('hidden');
-            updateCartModal();
-        });
+        // Nav cart now navigates to checkout so users see their items
+        const navCartBtn = document.getElementById('cart-button');
+        if (navCartBtn) {
+            navCartBtn.addEventListener('click', function() {
+                try {
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                } catch (ex) {
+                    console.warn('Could not save cart:', ex);
+                }
+                window.location.href = 'checkout.html';
+            });
+        }
         
         document.getElementById('mobile-cart-button').addEventListener('click', function() {
             document.getElementById('cart-modal').classList.remove('hidden');
@@ -636,6 +671,19 @@
         });
         
         document.getElementById('close-cart')
+
+        // Listen for cart updates from other tabs/windows
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'cart') {
+                try {
+                    cart = JSON.parse(e.newValue) || [];
+                } catch (err) {
+                    cart = [];
+                }
+                updateCartCount();
+                updateCartModal();
+            }
+        });
     </script>
 
 <!-- ************************ -->

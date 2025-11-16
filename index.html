@@ -49,7 +49,7 @@
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-4 flex items-center md:ml-6">
-                        <button class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">
+                        <button id="cart-button" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300" onclick="localStorage.setItem('cart', JSON.stringify(cart)); window.location.href='checkout.html';">
                             <i data-feather="shopping-cart" class="inline mr-1"></i> Cart (<span id="cart-count">0</span>)
                         </button>
                     </div>
@@ -411,8 +411,15 @@
             menu.classList.toggle('hidden');
         });
 
-        // Shopping cart functionality
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        // Shopping cart functionality with localStorage fallback
+        let cart = [];
+        try {
+            const cartData = localStorage.getItem('cart');
+            cart = cartData ? JSON.parse(cartData) : [];
+        } catch (e) {
+            console.warn('localStorage access blocked:', e);
+            cart = [];
+        }
         
         function updateCartCount() {
             const count = cart.reduce((total, item) => total + item.quantity, 0);
@@ -468,7 +475,11 @@
                 button.addEventListener('click', function() {
                     const index = parseInt(this.getAttribute('data-index'));
                     cart.splice(index, 1);
-                    localStorage.setItem('cart', JSON.stringify(cart));
+                    try {
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                    } catch (e) {
+                        console.warn('Could not save cart:', e);
+                    }
                     updateCartCount();
                     updateCartModal();
                     feather.replace();
@@ -490,15 +501,24 @@
                 if (existingItem) {
                     existingItem.quantity += 1;
                 } else {
+                    // determine an image for the item (try data attribute, then nearby img)
+                    const itemEl = this.closest('.menu-item');
+                    const imgEl = itemEl ? itemEl.querySelector('img') : null;
+                    const image = this.getAttribute('data-image') || (imgEl ? imgEl.src : 'http://static.photos/food/200x200/1');
                     cart.push({
-                        id,
+                        id: String(id),
                         name,
                         price,
+                        image,
                         quantity: 1
                     });
                 }
                 
-                localStorage.setItem('cart', JSON.stringify(cart));
+                try {
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                } catch (e) {
+                    console.warn('Could not save cart:', e);
+                }
                 updateCartCount();
                 
                 // Show a quick notification
@@ -509,7 +529,12 @@
                 
                 setTimeout(() => {
                     notification.remove();
-                }, 2000);
+                }, 1200);
+
+                // Redirect to checkout so user sees the cart (short delay to show notification)
+                setTimeout(() => {
+                    window.location.href = 'checkout.html';
+                }, 1400);
             });
         });
         
@@ -535,6 +560,31 @@
         
         // Initialize cart count on page load
         updateCartCount();
+
+        // Listen for cart updates from other tabs/windows
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'cart') {
+                try {
+                    cart = JSON.parse(e.newValue) || [];
+                } catch (err) {
+                    cart = [];
+                }
+                updateCartCount();
+            }
+        });
+
+        // Handle cart button click with localStorage error handling
+        const cartBtn = document.getElementById('cart-button');
+        if (cartBtn) {
+            cartBtn.addEventListener('click', function(e) {
+                try {
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                } catch (ex) {
+                    console.warn('Could not save cart to localStorage:', ex);
+                }
+                window.location.href = 'checkout.html';
+            });
+        }
     </script>
 </body>
 </html>
