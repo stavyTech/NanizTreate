@@ -9,6 +9,8 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <style>
         .contact-hero {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('http://static.photos/food/1200x630/15');
@@ -183,7 +185,7 @@
                     <div class="map-container">
 
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3974.6087075419027!2d8.358699309041437!3d5.004471386575927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x105d7d2548ca099d%3A0x865bbd2d03c92227!2sJONATHAN%20BYPASS%20ROUNDABOUT!5e0!3m2!1sen!2sng!4v1757938381144!5m2!1sen!2sng" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.522260822543!2d3.421515315231269!3d6.453323995324166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf4cc9b07cf55%3A0xc4ae10b3a4d4f8e3!2sVictoria%20Island%2C%20Lagos!5e0!3m2!1sen!2sng!4v1629999999999!5m2!1sen!2sng" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
+                       
                     </div>
                     
                     <div class="mt-8">
@@ -356,7 +358,7 @@
             </div>
         </div>
     </footer>
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  
     <script>
         // Initialize AOS animations
         AOS.init({
@@ -393,12 +395,12 @@
         });
 
         // Form submission (example)
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // document.querySelector('form').addEventListener('submit', function(e) {
+        //     e.preventDefault();
             // Here you would typically send the form data to your server
-            alert('Thank you for your message! We will get back to you soon.');
-            this.reset();
-        });
+        //     alert('Thank you for your message! We will get back to you soon.');
+        //     this.reset();
+        // });
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -417,7 +419,7 @@
             });
         });
 
-      emailjs.init("vMPoS5H-LDiU0uqxn"); // Replace with your EmailJS public key
+      emailjs.init('vMPoS5H-LDiU0uqxn'); // Replace with your EmailJS public key
 
 
     document.addEventListener('DOMContentLoaded', function(){
@@ -429,15 +431,15 @@ form.addEventListener('submit', function(e){
 
   const contactParams = {
         contact_first_name: document.getElementById("first-name").value,
-        contact_last_name: document.getElementById("last-name").value,
-        contact_email: document.getElementById("email").value,
-        contact_phone: document.getElementById("phone").value,
-        contact_subject: document.getElementById("subject").value,
-        contact_message: document.getElementById("message").value,
-        contact_time: document.getElementById("best-time").value
+        customer_last_name: document.getElementById("last-name").value,
+        customer_email: document.getElementById("email").value,
+        customer_phone: document.getElementById("phone").value,
+        customer_subject: document.getElementById("subject").value,
+        customer_message: document.getElementById("message").value,
+        // contact_time: document.getElementById("best-time").value
       };
 
-      emailjs.send( "service_xlc1q5r", "template_wqkkv16", contactParams)
+      emailjs.send( 'service_xlc1q5r', 'template_wqkkv16', contactParams)
         .then(() => {
           alert("✅ your message has been sent successfully! We will get back to You Shortly");
          
