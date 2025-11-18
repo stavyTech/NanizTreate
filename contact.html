@@ -323,7 +323,7 @@
                     <ul class="space-y-2 text-gray-400">
                         <li class="flex items-start">
                             <i data-feather="map-pin" class="mr-2 mt-1"></i>
-                            <span>123 Food Street, Victoria Island, Lagos</span>
+                            <span>123 Food Street, jonathan bypass</span>
                         </li>
                         <li class="flex items-start">
                             <i data-feather="phone" class="mr-2 mt-1"></i>
@@ -331,7 +331,7 @@
                         </li>
                         <li class="flex items-start">
                             <i data-feather="mail" class="mr-2 mt-1"></i>
-                            <span>info@naniztreate.com</span>
+                            <span>naniztreate@gmail.com</span>
                         </li>
                     </ul>
                 </div>
@@ -424,18 +424,18 @@
 
     document.addEventListener('DOMContentLoaded', function(){
 
-let form = document.querySelector('.form-input-container');
+let form = document.querySelector('form');
 
 form.addEventListener('submit', function(e){
   e.preventDefault();
 
   const contactParams = {
-        contact_first_name: document.getElementById("first-name").value,
-        customer_last_name: document.getElementById("last-name").value,
-        customer_email: document.getElementById("email").value,
-        customer_phone: document.getElementById("phone").value,
-        customer_subject: document.getElementById("subject").value,
-        customer_message: document.getElementById("message").value,
+        cust_first_name: document.getElementById("first-name").value,
+        cust_last_name: document.getElementById("last-name").value,
+        cust_email: document.getElementById("email").value,
+        cust_phone: document.getElementById("phone").value,
+        cust_subject: document.getElementById("subject").value,
+        cust_message: document.getElementById("message").value,
         // contact_time: document.getElementById("best-time").value
       };
 
